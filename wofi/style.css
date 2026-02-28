@@ -1,0 +1,93 @@
+@define-color bg-color #1e1e1e;
+@define-color border-color #06abc1;
+/* @define-color border-color #0aec59 */
+@define-color selected-color #2e2e2e;
+@define-color selected-border-color #06abc1;
+@define-color input-text-color #333333;
+@define-color text-color #ffffff;
+
+* {
+  font-family: 'JetBrainsMono', monospace;
+  font-size: 14px;
+}
+
+/* Window */
+window {
+  margin: 0px;
+  padding: 0px;
+  background-color: transparent;
+}
+
+/* Outer Box */
+#outer-box {
+  padding: 0px;
+  border: 2px solid @border-color;
+  border-radius: 8px;
+  background-color: @selected-color;
+  opacity: 0.9;
+}
+
+/* Inner Box */
+#inner-box {
+  margin: 5px;
+  padding: 0px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Scroll */
+#scroll {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Input */
+#input {
+  margin: 10px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  color: @input-text-color;
+}
+
+#input image {
+  border: none;
+  color: @input-text-color;
+}
+
+#input:focus {
+  outline: none;
+}
+
+/* Text */
+#text {
+  margin: 5px;
+  border: none;
+  color: @text-color;
+}
+
+#entry {
+  margin: 5px;
+  padding: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+#entry arrow {
+  border: none;
+  color: @text-color;
+}
+
+/* Selected Entry */
+#entry:selected {
+  border-radius: 8px;
+  border: 1px solid @selected-border-color;
+  background-color: @bg-color;
+}
+
+#entry:selected #text {
+  color: @text-color;
+}

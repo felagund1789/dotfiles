@@ -1,0 +1,68 @@
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+@import "../waybar/mocha.css";
+
+
+window {
+	/* background: url("/home/felagund1789/.config/backgrounds/wallpaper.png"); */
+	background-image: image(url("../backgrounds/wallpaper.png"));
+	background-size: cover;
+}
+
+button {
+	color: @text;
+	text-decoration-color: @text;
+	background-color: @crust;
+	outline-style: none;
+	border: none;
+	border-width: 0px;
+	border-radius: 10px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 10%;
+	box-shadow: none;
+	text-shadow: none;
+	animation: gradient_f 20s ease-in infinite;
+}
+
+
+button:focus {
+	background-color: @surface1;
+	background-size: 20%;
+	border-radius: 10px;
+}
+
+button:hover {
+	background-color: @surface1;
+	background-size: 25%;
+	border-radius: 10px;
+	animation: gradient_f 20s ease-in infinite;
+	transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
+}
+
+#lock {
+    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+}
