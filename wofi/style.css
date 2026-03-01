@@ -1,7 +1,7 @@
-@define-color bg-color #1e1e1e;
-@define-color border-color #06abc1;
+@define-color background-color #11111b;
+/* @define-color border-color #06abc1; */
 /* @define-color border-color #0aec59 */
-@define-color selected-color #2e2e2e;
+@define-color selected-color #45475a;
 @define-color selected-border-color #06abc1;
 @define-color input-text-color #333333;
 @define-color text-color #ffffff;
@@ -21,9 +21,9 @@ window {
 /* Outer Box */
 #outer-box {
   padding: 0px;
-  border: 0px;
+  border: 1px solid @border-color;
   border-radius: 8px;
-  background-color: @selected-color;
+  background-color: @background-color;
 }
 
 /* Inner Box */
@@ -84,8 +84,9 @@ window {
 /* Selected Entry */
 #entry:selected {
   border-radius: 8px;
-  border: 1px solid @selected-border-color;
-  background-color: @bg-color;
+  border: none;
+  background-color: @selected-color;
+  outline: none;
 }
 
 #entry:selected #text {
