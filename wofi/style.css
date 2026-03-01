@@ -91,3 +91,9 @@ window {
 #entry:selected #text {
   color: @text-color;
 }
+
+#entry * {
+  border: none;
+  color: @text-color;
+  background-color: transparent;
+}

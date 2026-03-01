@@ -1,133 +1,104 @@
-@import "mocha.css"; 
-
 * {
-    font-family: "MesloLGS Nerd Font Mono Bold";
-    font-size: 16px;
-    min-height: 0;
-    font-weight: bold;
+    font-size: 15px;
+    font-family: "Cascadia Code Nerd Font";
 }
-
 window#waybar {
-    background: transparent;
-    background-color: @crust;
-    color: @overlay0;
-    transition-property: background-color;
-    transition-duration: 0.1s;
-    border-bottom: 1px solid @overlay1;
+    all: unset;
 }
-
-#window {
-    margin: 8px;
-    padding-left: 8;
-    padding-right: 8;
+.modules-left {
+    margin: 10px 0px 5px 10px;
 }
-
-button {
-    box-shadow: inset 0 -3px transparent;
-    border: none;
-    border-radius: 0;
+.modules-center {
+    margin: 10px 0px 5px 0px;
 }
-
-button:hover {
-    background: inherit;
-    color: @mauve;
-    border-top: 2px solid @mauve;
+.modules-right {
+    margin: 10px 10px 5px 0px;
 }
-
-#workspaces button {
-    padding: 0 4px;
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 5px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }
-
-#workspaces button.focused {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @rosewater;
-    border-top: 2px solid @rosewater;
+.modules-left *,
+.modules-right * {
+    margin: 0px 5px;
 }
-
-#workspaces button.active {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: @mauve;
-    border-top: 2px solid @mauve;
+tooltip {
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
 }
-
-#workspaces button.urgent {
-    background-color: #eb4d4b;
+tooltip label {
+    color: #acacac;
 }
-
-#pulseaudio,
+#clock:hover,
+#custom-notification:hover,
+#network:hover,
+#battery:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#battery:hover,
+#custom-powerprofile:hover,
+#language:hover,
+#custom-jellyfin:hover,
+#custom-bottom:hover {
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+#custom-notification,
+#custom-powerprofile,
 #clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#wireplumber,
-#tray,
+#workspace,
 #network,
-#mode,
-#custom-power,
-#scratchpad {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 4px;
-  margin-right: 4px;
-  padding-left: 4px;
-  padding-right: 4px;
+#bluetooth,
+#pulseaudio,
+#battery,
+#language,
+#custom-jellyfin,
+#custom-bottom {
+    padding: 0px 5px;
+    color: #acacac;
 }
-
-#clock {
-    color: @maroon;
-    border-bottom: 2px solid @maroon;
+#workspaces button {
+    all: unset;
+    padding: 0px 5px;
+    color: rgba(255, 255, 255, 0.5);
 }
-
-#clock.date {
-    color: @mauve;
-    border-bottom: 2px solid @mauve;
+#workspaces button:hover,
+#workspaces button.empty:hover {
+    color: rgba(255, 255, 255, 0.8);
+    border: none;
+    transition: all 0.3s ease;
 }
-
-#pulseaudio {
-    color: @blue;
-    border-bottom: 2px solid @blue;
+#workspaces button.active,
+#workspaces button.empty.active {
+    color: #acacac;
+    border: none;
 }
-
-#network {
-    color: @yellow;
-    border-bottom: 2px solid @yellow;
+#workspaces button.empty {
+    color: rgba(255, 255, 255, 0.1);
+    border: none;
 }
-
-#idle_inhibitor {
-    margin-right: 12px;
-    color: #7cb342;
+#battery.charging.good,
+#battery.plugged.good,
+#battery.good:not(.charging) {
+    color: rgb(0, 255, 183);
 }
-
-#idle_inhibitor.activated {
-    color: @red;
+#battery.charging.ok,
+#battery.plugged.ok,
+#battery.ok:not(.charging) {
+    color: rgb(255, 215, 0);
 }
-
-#battery {
-    color: @green;
-    border-bottom: 2px solid @green;
+#battery.charging.warning,
+#battery.plugged.warning,
+#battery.warning:not(.charging) {
+    color: rgb(255, 69, 0);
 }
-
-#custom-power {
-    color: @mauve;
-    border-bottom: 2px solid @mauve;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left>widget:first-child>#workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#workspaces {
-    margin-right: 0;
-}
-
-#custom-vpn {
-    color: @lavender;
-    border-radius: 15px;
-    padding-left: 6px;
-    padding-right: 6px;
+#battery.charging.critical,
+#battery.plugged.critical,
+#network.disconnected,
+#battery.critical:not(.charging) {
+    color: rgb(215, 0, 64);
 }
