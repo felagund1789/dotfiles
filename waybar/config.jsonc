@@ -2,9 +2,9 @@
     "layer": "top",
     "position": "top",
     "reload_style_on_change": true,
-    "modules-left": ["clock#clock", "clock#date", "hyprland/language"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["pulseaudio#microphone", "pulseaudio#speaker", "bluetooth", "network", "battery", "custom/notification"],
+    "modules-left": ["hyprland/workspaces","custom/playerctl"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["pulseaudio#microphone", "pulseaudio#speaker", "bluetooth", "network", "battery", "hyprland/language", "clock#clock", "clock#date", "custom/notification"],
 
     "hyprland/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace r-1",
@@ -69,7 +69,7 @@
         "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂", "󰁹"]
     },
     "pulseaudio#speaker": {
-        "scroll-step": 10,
+        "scroll-step": 2,
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
         "format": "{icon} {volume}%",
@@ -83,6 +83,19 @@
         "format-source": "",
         "format-source-muted":""
     },
+    "custom/playerctl": {
+        "format": "[<span foreground='#46c880'>  </span> <span>{}</span> ]",
+        "return-type": "json",
+        "max-length": 55,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{playerName}}\"}' -F",
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "format-icons": {
+            "Playing": "<span foreground='#46c880'>  </span>",
+            "Paused": "<span foreground='#cdd6f4'> 󰏥 </span>"
+        }
+    },
     "custom/powerprofile": {
         "format": "󰓅",
         "interval": 1,
@@ -95,6 +108,7 @@
         "format": "󰌌  {}",
         "format-gr": "GR",
         "format-en": "EN",
-        "tooltip": false
+        "tooltip": true,
+        "on-click": "hyprctl switchxkblayout all next"
     }
 }

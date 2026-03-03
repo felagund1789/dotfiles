@@ -22,7 +22,7 @@ window {
 #outer-box {
   padding: 0px;
   border: 1px solid @border-color;
-  border-radius: 8px;
+  border-radius: 16px;
   background-color: @background-color;
 }
 
