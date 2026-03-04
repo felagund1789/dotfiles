@@ -121,7 +121,8 @@
     },
     "pulseaudio#speaker": {
         "scroll-step": 2,
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click": "bash ~/.config/waybar/scripts/audio_menu.sh",
+        "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
         "format": "{icon} {volume}%",
         "format-muted": "󰝟",
