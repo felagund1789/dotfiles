@@ -96,7 +96,8 @@
         "tooltip-format": "Bluetooth on",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
-        "on-click": "kitty -e bluetui"
+        "on-click": "bash ~/.config/waybar/scripts/bluetooth_menu.sh",
+        "on-click-right": "kitty -e bluetui"
     },
     "hyprland/language": {
         "format": "{}",
