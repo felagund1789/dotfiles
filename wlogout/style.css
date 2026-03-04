@@ -3,9 +3,6 @@
 	box-shadow: none;
 }
 
-@import "../waybar/mocha.css";
-
-
 window {
 	/* background: url("/home/felagund1789/.config/backgrounds/wallpaper.png"); */
 	background-image: image(url("../backgrounds/wallpaper.png"));
@@ -13,9 +10,9 @@ window {
 }
 
 button {
-	color: @text;
-	text-decoration-color: @text;
-	background-color: @crust;
+	color: #cdd6f4;
+	text-decoration-color: #cdd6f4;
+	background-color: #11111b;
 	outline-style: none;
 	border: none;
 	border-width: 0px;
@@ -30,13 +27,13 @@ button {
 
 
 button:focus {
-	background-color: @surface1;
+	background-color: #45475a;
 	background-size: 20%;
 	border-radius: 10px;
 }
 
 button:hover {
-	background-color: @surface1;
+	background-color: #45475a;
 	background-size: 25%;
 	border-radius: 10px;
 	animation: gradient_f 20s ease-in infinite;
