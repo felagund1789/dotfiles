@@ -28,8 +28,11 @@ window#waybar {
 #pulseaudio,
 #network,
 #bluetooth,
+#language,
 #battery,
-#clock {
+#clock,
+#tray,
+#custom-notification {
     padding: 0 8px;
     margin: 0 2px;
     color: #cdd6f4;
@@ -42,6 +45,10 @@ window#waybar {
 
 #mpris {
     color: #cba6f7;
+}
+
+#mpris.playing {
+    color: #a6e3a1;
 }
 
 #mpris.paused {
@@ -113,6 +120,15 @@ window#waybar {
     color: #f38ba8;
 }
 
+#language {
+    padding: 0 6px;
+    border-radius: 8px;
+    color: #89dceb;
+    background: rgba(17, 17, 27, 0.75);
+    border: 1px solid rgba(108, 112, 134, 0.5);
+    font-size: 12px;
+}
+
 #bluetooth.on {
     color: #89dceb;
 }
@@ -144,12 +160,44 @@ window#waybar {
     color: #94e2d5;
 }
 
+#tray {
+    padding: 0 10px;
+    border-radius: 10px;
+    background: rgba(17, 17, 27, 0.75);
+    border: 1px solid rgba(108, 112, 134, 0.45);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: rgba(243, 139, 168, 0.18);
+    border-radius: 8px;
+}
+
+#custom-notification {
+    color: #89dceb;
+}
+
+#custom-notification.has-notification {
+    color: #f9e2af;
+}
+
+#custom-notification.none {
+    color: #7f849c;
+}
+
 #mpris:hover,
 #pulseaudio:hover,
 #network:hover,
 #bluetooth:hover,
+#language:hover,
 #battery:hover,
-#clock:hover {
+#clock:hover,
+#tray:hover,
+#custom-notification:hover {
     color: #cdd6f4;
 }
 
