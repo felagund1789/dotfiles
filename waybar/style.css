@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    min-height: 0;
+    min-height: 25px;
     font-family: "Cascadia Code Nerd Font";
     font-size: 14px;
     font-weight: 600;
@@ -55,8 +55,7 @@ window#waybar {
     color: #fab387;
 }
 
-#mpris.stopped,
-#mpris:empty {
+#mpris.stopped {
     margin: 0;
     padding: 0;
     min-width: 0;
@@ -118,15 +117,6 @@ window#waybar {
 #network.disconnected,
 #network.disabled {
     color: #f38ba8;
-}
-
-#language {
-    padding: 0 6px;
-    border-radius: 8px;
-    color: #89dceb;
-    background: rgba(17, 17, 27, 0.75);
-    border: 1px solid rgba(108, 112, 134, 0.5);
-    font-size: 12px;
 }
 
 #bluetooth.on {
