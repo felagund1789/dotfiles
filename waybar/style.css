@@ -1,111 +1,164 @@
 * {
-    font-size: 15px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
     font-family: "Cascadia Code Nerd Font";
-}
-window#waybar {
-    all: unset;
-}
-.modules-left {
-    margin: 10px 0px 5px 10px;
-}
-.modules-center {
-    margin: 10px 0px 5px 0px;
-}
-.modules-right {
-    margin: 10px 10px 5px 0px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+.modules-left,
 .modules-center,
 .modules-right {
-    padding: 5px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    margin: 10px 10px 6px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: rgba(30, 30, 46, 0.85);
+    border: 1px solid rgba(49, 50, 68, 0.8);
 }
-.modules-left *,
-.modules-center *,
-.modules-right * {
-    margin: 0px 5px;
-}
-tooltip {
-    background-color: rgba(0, 0, 0, 0.9);
-    border-radius: 5px;
-}
-tooltip label {
-    color: #acacac;
-}
-#clock:hover,
-#custom-notification:hover,
-#network:hover,
-#battery:hover,
-#pulseaudio:hover,
-#bluetooth:hover,
-#battery:hover,
-#custom-powerprofile:hover,
-#language:hover,
-#custom-jellyfin:hover,
-#custom-bottom:hover {
-    transition: all 0.3s ease;
-    opacity: 0.8;
-}
-#custom-notification,
-#custom-powerprofile,
-#clock,
-#workspace,
+
+#workspaces,
+#window,
+#mpris,
+#pulseaudio,
 #network,
 #bluetooth,
-#pulseaudio,
 #battery,
-#language,
-#custom-jellyfin,
-#custom-bottom {
-    padding: 0px 5px;
-    color: #acacac;
+#clock {
+    padding: 0 8px;
+    margin: 0 2px;
+    color: #cdd6f4;
+    transition: all 0.2s ease;
 }
+
+#window {
+    color: #bac2de;
+}
+
+#mpris {
+    color: #cba6f7;
+}
+
+#mpris.paused {
+    color: #fab387;
+}
+
+#mpris.stopped,
+#mpris:empty {
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    color: transparent;
+}
+
 #workspaces {
-    padding: 5px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    padding: 2px 6px;
 }
+
 #workspaces button {
     all: unset;
-    padding: 0px 5px;
-    color: rgba(255, 255, 255, 0.5);
+    padding: 0 6px;
+    color: #6c7086;
 }
-#workspaces button:hover,
-#workspaces button.empty:hover {
-    color: rgba(255, 255, 255, 0.8);
-    border: none;
-    transition: all 0.3s ease;
+
+#workspaces button.active {
+    color: #b4befe;
 }
-#workspaces button.active,
-#workspaces button.empty.active {
-    color: #acacac;
-    border: none;
+
+#workspaces button.visible {
+    color: #89dceb;
 }
+
 #workspaces button.empty {
-    color: rgba(255, 255, 255, 0.1);
-    border: none;
+    color: rgba(108, 112, 134, 0.5);
 }
-#battery.charging.good,
-#battery.plugged.good,
-#battery.good:not(.charging) {
-    color: rgb(0, 255, 183);
+
+#workspaces button:hover {
+    color: #cdd6f4;
 }
-#battery.charging.ok,
-#battery.plugged.ok,
-#battery.ok:not(.charging) {
-    color: rgb(255, 215, 0);
+
+#clock {
+    color: #74c7ec;
+    font-feature-settings: "tnum";
 }
-#battery.charging.warning,
-#battery.plugged.warning,
-#battery.warning:not(.charging) {
-    color: rgb(255, 69, 0);
+
+#pulseaudio.microphone {
+    color: #f5e0dc;
 }
-#battery.charging.critical,
-#battery.plugged.critical,
+
+#pulseaudio.speaker {
+    color: #89b4fa;
+}
+
+#pulseaudio.muted,
+#pulseaudio.source-muted {
+    color: #7f849c;
+}
+
+#network.wifi {
+    color: #94e2d5;
+}
+
+#network.ethernet {
+    color: #89b4fa;
+}
+
 #network.disconnected,
-#battery.critical:not(.charging) {
-    color: rgb(215, 0, 64);
+#network.disabled {
+    color: #f38ba8;
+}
+
+#bluetooth.on {
+    color: #89dceb;
+}
+
+#bluetooth.connected {
+    color: #89b4fa;
+}
+
+#bluetooth.disabled,
+#bluetooth.off,
+#bluetooth.no-controller {
+    color: #7f849c;
+}
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.warning {
+    color: #f9e2af;
+}
+
+#battery.critical {
+    color: #f38ba8;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #94e2d5;
+}
+
+#mpris:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#battery:hover,
+#clock:hover {
+    color: #cdd6f4;
+}
+
+tooltip {
+    background: #181825;
+    border: 1px solid #45475a;
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: #cdd6f4;
 }
