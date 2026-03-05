@@ -3,7 +3,7 @@
 set -euo pipefail
 
 menu() {
-    wofi --dmenu --insensitive --prompt "$1" --matching fuzzy --width 520 --lines 15
+    wofi --dmenu --insensitive --prompt "$1" --matching fuzzy --width 520 --lines 6 --cache-file /dev/null
 }
 
 notify() {
@@ -12,11 +12,11 @@ notify() {
 
 signal_icon() {
     s=${1:-0}
-    if   ((s>=80)); then echo "󰤨"
-    elif ((s>=60)); then echo "󰤥"
-    elif ((s>=40)); then echo "󰤢"
-    elif ((s>=20)); then echo "󰤟"
-    else echo "󰤯"
+    if   ((s>=80)); then echo "󰤨 "
+    elif ((s>=60)); then echo "󰤥 "
+    elif ((s>=40)); then echo "󰤢 "
+    elif ((s>=20)); then echo "󰤟 "
+    else echo "󰤯 "
     fi
 }
 
@@ -37,7 +37,8 @@ sort -t: -k3 -nr |
 awk -F: '!seen[$2]++'
 )
 
-entries="$toggle\n$rescan"
+options="$toggle\n$rescan"
+entries=""
 declare -A map
 
 for n in "${nets[@]}"; do
@@ -54,16 +55,12 @@ for n in "${nets[@]}"; do
 
     e="$prefix$icon ${signal}% $lock  $ssid"
 
-    if [ "$inuse" = "*" ]; then
-        entries="$toggle\n$rescan\n$e\n${entries#*$'\n'}"
-    else
-        entries="$entries\n$e"
-    fi
+    entries="$entries\n$e"
 
     map["$e"]="$ssid"
 done
 
-choice=$(printf '%b\n' "$entries" | menu "Wi-Fi")
+choice=$(printf '%b\n' "$options$entries" | menu "Wi-Fi")
 [ -z "$choice" ] && exit 0
 
 if [ "$choice" = "$toggle" ]; then

@@ -3,7 +3,7 @@
 set -euo pipefail
 
 menu() {
-    wofi --dmenu --insensitive --prompt "$1" --matching fuzzy --width 520 --lines 12
+    wofi --dmenu --insensitive --prompt "$1" --matching fuzzy --width 520
 }
 
 notify() {

@@ -8,7 +8,7 @@ menu() {
      --matching fuzzy \
      --prompt "$1" \
      --width 520 \
-     --lines 12 \
+     --lines 6 \
      --cache-file /dev/null
 }
 
@@ -28,13 +28,13 @@ toggle="󰂲  Turn Bluetooth Off"
 
 bluetui="  Open Bluetui"
 
-entries="$toggle\n$bluetui"
+entries="$toggle"
 
 # Collect devices (connected first)
 mapfile -t devices < <(
 {
 bluetoothctl devices Connected
-bluetoothctl paired-devices
+bluetoothctl devices Paired
 } | awk '!seen[$2]++'
 )
 
@@ -64,7 +64,7 @@ for d in "${devices[@]}"; do
 
     # Query battery only for connected devices (fast)
     if [ "$connected" = "yes" ]; then
-        batt=$(bluetoothctl info "$mac" | sed -n 's/.*(\([0-9]\+\)).*/\1/p' | head -n1)
+        batt=$(bluetoothctl info "$mac" | sed -n 's/Battery.*(\([0-9]\+\))$/\1/p' | head -n1)
         [ -n "$batt" ] && entry="$entry ${batt}%"
     fi
 
