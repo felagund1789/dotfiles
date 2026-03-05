@@ -1,149 +1,109 @@
 #!/usr/bin/env bash
 
-set -u
+set -euo pipefail
 
-menu_cmd() {
-    wofi --dmenu --insensitive --prompt "$1"
+menu() {
+    wofi --dmenu \
+     --insensitive \
+     --matching fuzzy \
+     --prompt "$1" \
+     --width 520 \
+     --lines 12 \
+     --cache-file /dev/null
 }
 
 notify() {
-    if command -v notify-send >/dev/null 2>&1; then
-        notify-send "$1" "$2"
-    fi
+    command -v notify-send >/dev/null && notify-send "Bluetooth" "$1"
 }
 
-if ! command -v bluetoothctl >/dev/null 2>&1; then
-    notify "Bluetooth" "bluetoothctl is not installed"
-    exit 1
-fi
+command -v bluetoothctl >/dev/null || { notify "bluetoothctl not installed"; exit 1; }
+command -v wofi >/dev/null || exit 1
 
-if ! command -v wofi >/dev/null 2>&1; then
-    notify "Bluetooth" "wofi is not installed"
-    exit 1
-fi
+while true; do
 
-powered="$(bluetoothctl show 2>/dev/null | awk -F': ' '/Powered:/ {print $2; exit}')"
+powered=$(bluetoothctl show | awk -F': ' '/Powered:/ {print $2}')
 
-if [ "$powered" = "yes" ]; then
-    action_power="󰂲  Turn Bluetooth Off"
-else
-    action_power="󰂯  Turn Bluetooth On"
-fi
+toggle="󰂲  Turn Bluetooth Off"
+[ "$powered" = "no" ] && toggle="󰂯  Turn Bluetooth On"
 
-action_open_bluetui="  Open Bluetui"
+bluetui="  Open Bluetui"
 
-connected_list="$(bluetoothctl devices Connected 2>/dev/null)"
-paired_list="$(bluetoothctl paired-devices 2>/dev/null)"
+entries="$toggle\n$bluetui"
 
-menu_entries="$action_power\n$action_open_bluetui"
+# Collect devices (connected first)
+mapfile -t devices < <(
+{
+bluetoothctl devices Connected
+bluetoothctl paired-devices
+} | awk '!seen[$2]++'
+)
 
-declare -A entry_mac
-declare -A entry_connected
+declare -A mac_map
+declare -A state_map
 
-collect_lines="$(printf '%s\n%s\n' "$connected_list" "$paired_list" | awk '!seen[$2]++')"
+for d in "${devices[@]}"; do
 
-while IFS= read -r line; do
-    [ -z "$line" ] && continue
+    mac=${d#Device }
+    mac=${mac%% *}
 
-    mac="$(printf '%s\n' "$line" | awk '{print $2}')"
-    name="$(printf '%s\n' "$line" | cut -d' ' -f3-)"
-
-    [ -z "$mac" ] && continue
+    name=${d#Device ??\:??\:??\:??\:??\:?? }
     [ -z "$name" ] && name="$mac"
 
-    info="$(bluetoothctl info "$mac" 2>/dev/null)"
-    connected="$(printf '%s\n' "$info" | awk -F': ' '/Connected:/ {print $2; exit}')"
-    battery="$(printf '%s\n' "$info" | sed -n 's/.*Battery Percentage:.*(\([0-9][0-9]*\)).*/\1/p' | head -n 1)"
+    connected="no"
+    bluetoothctl devices Connected | grep -q "$mac" && connected="yes"
 
-    state_icon="󰂲"
-    state_text=""
+    icon="󰂲"
+    prefix="  "
+
     if [ "$connected" = "yes" ]; then
-        state_icon="󰂱"
-        state_text=" connected"
+        icon="󰂱"
+        prefix=" "
     fi
 
-    battery_text=""
-    if [ -n "$battery" ]; then
-        battery_text=" ${battery}%"
+    entry="$prefix$icon  $name"
+
+    # Query battery only for connected devices (fast)
+    if [ "$connected" = "yes" ]; then
+        batt=$(bluetoothctl info "$mac" | sed -n 's/.*(\([0-9]\+\)).*/\1/p' | head -n1)
+        [ -n "$batt" ] && entry="$entry ${batt}%"
     fi
 
-    short_mac="${mac##*:}"
-    entry="$state_icon  $name$battery_text  [$short_mac]$state_text"
+    entries="$entries\n$entry"
 
-    unique_entry="$entry"
-    idx=2
-    while [ -n "${entry_mac[$unique_entry]:-}" ]; do
-        unique_entry="$entry ($idx)"
-        idx=$((idx + 1))
-    done
+    mac_map["$entry"]="$mac"
+    state_map["$entry"]="$connected"
 
-    entry_mac["$unique_entry"]="$mac"
-    entry_connected["$unique_entry"]="$connected"
-    menu_entries="$menu_entries\n$unique_entry"
-done <<< "$collect_lines"
+done
 
-selection="$(printf '%b\n' "$menu_entries" | menu_cmd "Bluetooth")"
-[ -z "$selection" ] && exit 0
+choice=$(printf '%b\n' "$entries" | menu "Bluetooth")
+[ -z "$choice" ] && exit 0
 
-if [ "$selection" = "$action_power" ]; then
+if [ "$choice" = "$toggle" ]; then
     if [ "$powered" = "yes" ]; then
-        if bluetoothctl power off >/tmp/bluetooth_menu.log 2>&1; then
-            notify "Bluetooth" "Bluetooth turned off"
-            exit 0
-        fi
+        bluetoothctl power off && notify "Bluetooth disabled"
     else
-        if bluetoothctl power on >/tmp/bluetooth_menu.log 2>&1; then
-            notify "Bluetooth" "Bluetooth turned on"
-            exit 0
-        fi
+        bluetoothctl power on && notify "Bluetooth enabled"
     fi
-
-    err="$(tail -n 1 /tmp/bluetooth_menu.log 2>/dev/null)"
-    [ -z "$err" ] && err="Failed to toggle bluetooth power"
-    notify "Bluetooth" "$err"
-    exit 1
+    continue
 fi
 
-if [ "$selection" = "$action_open_bluetui" ]; then
+if [ "$choice" = "$bluetui" ]; then
     kitty -e bluetui >/dev/null 2>&1 &
     exit 0
 fi
 
-selected_mac="${entry_mac[$selection]:-}"
-selected_connected="${entry_connected[$selection]:-}"
+mac="${mac_map[$choice]:-}"
+state="${state_map[$choice]:-}"
 
-if [ -z "$selected_mac" ]; then
-    notify "Bluetooth" "Invalid selection"
-    exit 1
+[ -z "$mac" ] && continue
+
+# Ensure adapter powered
+[ "$powered" = "no" ] && bluetoothctl power on >/dev/null
+
+if [ "$state" = "yes" ]; then
+    bluetoothctl disconnect "$mac" && notify "Device disconnected"
+else
+    bluetoothctl connect "$mac" && notify "Device connected"
 fi
 
-if [ "$powered" != "yes" ]; then
-    if ! bluetoothctl power on >/tmp/bluetooth_menu.log 2>&1; then
-        err="$(tail -n 1 /tmp/bluetooth_menu.log 2>/dev/null)"
-        [ -z "$err" ] && err="Failed to power on bluetooth"
-        notify "Bluetooth" "$err"
-        exit 1
-    fi
-fi
-
-if [ "$selected_connected" = "yes" ]; then
-    if bluetoothctl disconnect "$selected_mac" >/tmp/bluetooth_menu.log 2>&1; then
-        notify "Bluetooth" "Device disconnected"
-        exit 0
-    fi
-
-    err="$(tail -n 1 /tmp/bluetooth_menu.log 2>/dev/null)"
-    [ -z "$err" ] && err="Failed to disconnect device"
-    notify "Bluetooth" "$err"
-    exit 1
-fi
-
-if bluetoothctl connect "$selected_mac" >/tmp/bluetooth_menu.log 2>&1; then
-    notify "Bluetooth" "Device connected"
-    exit 0
-fi
-
-err="$(tail -n 1 /tmp/bluetooth_menu.log 2>/dev/null)"
-[ -z "$err" ] && err="Failed to connect device"
-notify "Bluetooth" "$err"
-exit 1
+done
