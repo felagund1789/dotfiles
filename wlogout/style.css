@@ -6,6 +6,7 @@
 window {
 	background-image: none;
 	background-size: cover;
+	background-position:  50% 50%;
 }
 
 button {
