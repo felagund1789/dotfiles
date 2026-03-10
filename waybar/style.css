@@ -115,6 +115,10 @@ window#waybar {
     box-shadow: 0 0 10px rgba(205, 214, 244, 0.2);
 }
 
+#language {
+    min-width: 20px;
+}
+
 #clock {
     color: #74c7ec;
     font-feature-settings: "tnum";
