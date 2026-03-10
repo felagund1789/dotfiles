@@ -26,3 +26,5 @@ fastfetch --logo $(shuf -n 1 -e /opt/pokemon-colorscripts/colorscripts/small/reg
 
 alias vim="nvim"
 alias vi="nvim"
+alias ls="ls --color=auto"
+alias paru="paru --skipreview"
