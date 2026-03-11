@@ -55,7 +55,7 @@
     "custom/notification": {
         "return-type": "json",
         "interval": 3,
-        "exec": "~/.config/waybar/scripts/notification.sh",
+        "exec": "bash ~/.config/waybar/scripts/notification.sh",
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d",
         "escape": true,

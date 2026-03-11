@@ -12,7 +12,7 @@ if [ -z "$count" ]; then
 fi
 
 if [ "$count" -gt 0 ] 2>/dev/null; then
-  printf '{"text":" %s","class":"has-notification","tooltip":"%s unread notification(s)"}\n' "$count" "$count"
+  printf '{"text":"  %s","class":"has-notification","tooltip":"%s unread notification(s)"}\n' "$count" "$count"
 else
   printf '{"text":"","class":"none","tooltip":"No unread notifications"}\n'
 fi
