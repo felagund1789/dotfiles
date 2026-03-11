@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "reload_style_on_change": true,
-    "modules-left": ["hyprland/workspaces", "mpris"],
+    "modules-left": ["hyprland/workspaces", "custom/updates", "mpris"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "hyprland/language", "pulseaudio#microphone", "pulseaudio#speaker", "network", "bluetooth", "battery", "clock", "custom/notification"],
 
@@ -18,6 +18,14 @@
         "persistent-workspaces": {
             "*": [1, 2, 3, 4, 5, 6, 7, 8]
         }
+    },
+    "custom/updates": {
+        "format": "󰚰  {}",
+        "interval": 3600,
+        "exec": "paru -Qu 2>/dev/null | wc -l",
+        "exec-if": "paru -Qu 2>/dev/null | grep -q .",
+        "on-click": "kitty -e paru -Syu",
+        "tooltip": false
     },
     "mpris": {
         "player": "playerctld",

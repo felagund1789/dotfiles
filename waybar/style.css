@@ -44,7 +44,8 @@ window#waybar {
 #battery,
 #clock,
 #tray,
-#custom-notification {
+#custom-notification,
+#custom-updates {
     padding: 0 8px;
     margin: 0 2px;
     color: #cdd6f4;
@@ -239,6 +240,22 @@ window#waybar {
     background: rgba(243, 139, 168, 0.25);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(243, 139, 168, 0.5);
+}
+
+#custom-updates {
+    color: #f9e2af;
+    padding: 2px 10px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(249, 226, 175, 0.15) 0%, rgba(250, 179, 135, 0.1) 100%);
+    border: 1px solid rgba(249, 226, 175, 0.2);
+    box-shadow: 0 0 10px rgba(249, 226, 175, 0.2);
+    transition: all 0.3s ease;
+}
+
+#custom-updates:hover {
+    background: linear-gradient(135deg, rgba(249, 226, 175, 0.25) 0%, rgba(250, 179, 135, 0.2) 100%);
+    box-shadow: 0 0 15px rgba(249, 226, 175, 0.4);
+    border-color: rgba(249, 226, 175, 0.5);
 }
 
 #custom-notification {
