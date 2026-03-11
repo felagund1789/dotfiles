@@ -1,0 +1,109 @@
+* {
+    font-family: "Cascadia Code Nerd Font";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Main notification popup */
+.notification {
+    border-radius: 12px;
+    border: 1px solid rgba(49, 50, 68, 0.8);
+    background: linear-gradient(135deg, rgba(30, 30, 46, 0.94) 0%, rgba(24, 24, 37, 0.9) 100%);
+    color: #cdd6f4;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(205, 214, 244, 0.06);
+    padding: 10px;
+}
+
+.notification-content {
+    padding: 6px 8px;
+}
+
+.notification-default-action,
+.notification-action {
+    border-radius: 8px;
+    border: 1px solid rgba(137, 220, 235, 0.18);
+    background: linear-gradient(135deg, rgba(137, 220, 235, 0.14) 0%, rgba(137, 180, 250, 0.08) 100%);
+    color: #cdd6f4;
+    transition: all 0.25s ease;
+}
+
+.notification-default-action:hover,
+.notification-action:hover {
+    border-color: rgba(137, 220, 235, 0.45);
+    background: linear-gradient(135deg, rgba(137, 220, 235, 0.26) 0%, rgba(137, 180, 250, 0.18) 100%);
+    box-shadow: 0 0 12px rgba(137, 220, 235, 0.25);
+}
+
+.summary {
+    color: #cdd6f4;
+}
+
+.time {
+    color: #7f849c;
+}
+
+.body {
+    color: #bac2de;
+}
+
+/* Control center panel */
+.control-center {
+    border-radius: 12px;
+    border: 1px solid rgba(49, 50, 68, 0.85);
+    background: linear-gradient(135deg, rgba(30, 30, 46, 0.95) 0%, rgba(24, 24, 37, 0.92) 100%);
+    color: #cdd6f4;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(205, 214, 244, 0.05);
+}
+
+.control-center-list {
+    background: rgba(30, 30, 46, 0.95);
+    border: 1px solid rgba(49, 50, 68, 0.85);
+}
+
+.control-center .notification-row .notification-background {
+    background: rgba(30, 30, 46, 0.95);
+    border: 1px solid rgba(49, 50, 68, 0.85);
+}
+
+/* Widgets */
+.widget-title,
+.widget-dnd,
+.widget-label,
+.widget-buttons-grid,
+.widget-volume,
+.widget-backlight,
+.widget-mpris,
+.widget-menubar {
+    margin: 6px 10px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(69, 71, 90, 0.65);
+    background: linear-gradient(135deg, rgba(49, 50, 68, 0.5) 0%, rgba(30, 30, 46, 0.42) 100%);
+}
+
+.widget-title button,
+.widget-dnd switch,
+.widget-buttons-grid button {
+    border-radius: 8px;
+    border: 1px solid rgba(116, 199, 236, 0.25);
+    background: linear-gradient(135deg, rgba(116, 199, 236, 0.18) 0%, rgba(137, 180, 250, 0.1) 100%);
+    color: #cdd6f4;
+    transition: all 0.25s ease;
+}
+
+.widget-title button:hover,
+.widget-buttons-grid button:hover,
+.widget-dnd switch:hover {
+    border-color: rgba(116, 199, 236, 0.55);
+    box-shadow: 0 0 12px rgba(116, 199, 236, 0.28);
+}
+
+/* Critical/urgent visual accent */
+.notification.critical,
+.notification.urgency-critical {
+    border: 1px solid rgba(243, 139, 168, 0.65);
+    background: linear-gradient(135deg, rgba(69, 10, 29, 0.55) 0%, rgba(30, 30, 46, 0.94) 100%);
+    box-shadow: 0 0 18px rgba(243, 139, 168, 0.28);
+}
