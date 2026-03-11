@@ -541,9 +541,9 @@ menu_main() {
 					else
 						sub($1, wifi_6)
 				if ($4 == "*")
-					networks[0] = "  " check "    " $3
+					networks[0] = check "    " $3
 				else
-					networks[x++] = "  " $1 "    " $3
+					networks[x++] = $1 "    " $3
 			}
 			END {
 				if (0 in networks)
