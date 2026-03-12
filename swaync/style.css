@@ -5,6 +5,22 @@
 }
 
 /* Main notification popup */
+.notification-group,
+.notification-row,
+.notification-group:focus,
+.notification-row:focus {
+    background: none;
+    outline: none;
+}
+
+.notification-group .notification-group-headers .notification-group-icon {
+    color: transparent;
+}
+
+.notification-group .notification-group-headers .notification-group-header {
+    color: transparent;
+}
+
 .notification {
     border-radius: 12px;
     border: 1px solid rgba(49, 50, 68, 0.8);
@@ -12,7 +28,6 @@
     color: #cdd6f4;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45),
                 inset 0 1px 0 rgba(205, 214, 244, 0.06);
-    padding: 10px;
 }
 
 .notification-content {
@@ -49,6 +64,7 @@
 
 /* Control center panel */
 .control-center {
+    padding-top: 4px;
     border-radius: 12px;
     border: 1px solid rgba(49, 50, 68, 0.85);
     background: linear-gradient(135deg, rgba(30, 30, 46, 0.95) 0%, rgba(24, 24, 37, 0.92) 100%);
@@ -57,17 +73,11 @@
                 inset 0 1px 0 rgba(205, 214, 244, 0.05);
 }
 
-.control-center-list {
-    background: rgba(30, 30, 46, 0.95);
-    border: 1px solid rgba(49, 50, 68, 0.85);
-}
-
-.control-center .notification-row .notification-background {
-    background: rgba(30, 30, 46, 0.95);
-    border: 1px solid rgba(49, 50, 68, 0.85);
-}
-
 /* Widgets */
+.widget {
+    margin: 0px;
+    padding: 0px;
+}
 .widget-title,
 .widget-dnd,
 .widget-label,
