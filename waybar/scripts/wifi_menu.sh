@@ -3,11 +3,11 @@
 set -euo pipefail
 
 menu() {
-    wofi --dmenu --insensitive --prompt "$1" --matching fuzzy --width 520 --lines 6 --cache-file /dev/null
+    wofi --dmenu --insensitive --prompt "$1" --matching fuzzy --width 800 --lines 6 --cache-file /dev/null
 }
 
 notify() {
-    command -v notify-send >/dev/null && notify-send "Wi-Fi" "$1"
+    command -v notify-send >/dev/null && notify-send "Wi-Fi" "$1" -i "network-wireless"
 }
 
 signal_icon() {
@@ -31,11 +31,8 @@ toggle="󰖪  Turn Wi-Fi Off"
 
 rescan="󰑐  Rescan Networks"
 
-mapfile -t nets < <(
-nmcli -t -f IN-USE,SSID,SIGNAL,SECURITY device wifi list ifname "$iface" |
-sort -t: -k3 -nr |
-awk -F: '!seen[$2]++'
-)
+notify "Scanning for Wi-Fi networks..."
+mapfile -t nets < <(nmcli -t -f IN-USE,SSID,SIGNAL device wifi list ifname "$iface")
 
 options="$toggle\n$rescan"
 entries=""
@@ -47,13 +44,11 @@ for n in "${nets[@]}"; do
     [ -z "$ssid" ] && ssid="<hidden>"
 
     icon=$(signal_icon "$signal")
-    lock=""
-    [[ "$sec" != "" && "$sec" != "--" ]] && lock="󰌾"
 
     prefix="  "
-    [ "$inuse" = "*" ] && prefix=" "
+    [ "$inuse" = "*" ] && prefix="✓ "
 
-    e="$prefix$icon ${signal}% $lock  $ssid"
+    e="$prefix$icon ${signal}% $ssid"
 
     entries="$entries\n$e"
 
