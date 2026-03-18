@@ -82,7 +82,7 @@ if [ -n "$selected" ]; then
         swww img -t grow "$original_path"
 
         # replace the current wallpaper path in the wlogout style.css with the new one
-        sed -i "7 s|background-image: .*;|background-image: image(url(\"$original_path\"));|1" ~/.config/wlogout/style.css
+        sed -i "13 s|background-image: .*;|background-image: image(url(\"$original_path\"));|1" ~/.config/wlogout/style.css
 
         # replace the current wallpaper path in the hyprlock.conf file with the new one
         sed -i "15 s|path = .*|path = $original_path|" ~/.config/hypr/hyprlock.conf

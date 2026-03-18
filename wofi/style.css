@@ -1,3 +1,10 @@
+@define-color bg-color rgba(30, 30, 30, 0.5);
+@define-color border-color rgba(50, 50, 50, 0.8);
+@define-color selected-bg-color #45475a;
+@define-color selected-border-color #313244;
+@define-color text-color #cdd6f4;
+
+
 * {
     font-size: 15px;
     font-family: "Cascadia Code Nerd Font";
@@ -14,9 +21,9 @@ window {
 /* Outer Box */
 #outer-box {
   padding: 0px;
-  border: 1px solid #313244;
+  border: 1px solid @border-color;
   border-radius: 10px;
-  background-color: rgba(30, 30, 46, 0.92);
+  background-color: @bg-color;
 }
 
 /* Inner Box */
@@ -39,16 +46,16 @@ window {
 #input {
   margin: 10px;
   padding: 4px 8px;
-  border: 1px solid #313244;
+  border: 1px solid @border-color;
   border-radius: 5px;
   font-size: 14pt;
-  background-color: #11111b;
-  color: #cdd6f4;
+  background-color: #111111;
+  color: @text-color;
 }
 
 #input image {
   border: none;
-  color: #cdd6f4;
+  color: @text-color;
 }
 
 #input:focus {
@@ -59,7 +66,7 @@ window {
 #text {
   margin: 5px;
   border: none;
-  color: #cdd6f4;
+  color: @text-color;
 }
 
 #entry {
@@ -72,23 +79,23 @@ window {
 
 #entry arrow {
   border: none;
-  color: #cdd6f4;
+  color: @text-color;
 }
 
 /* Selected Entry */
 #entry:selected {
   border-radius: 5px;
-  border: 1px solid #313244;
-  background-color: #45475a;
+  border: 1px solid @selected-border-color;
+  background-color: @selected-bg-color;
   outline: none;
 }
 
 #entry:selected #text {
-  color: #cdd6f4;
+  color: @text-color;
 }
 
 #entry * {
   border: none;
-  color: #cdd6f4;
+  color: @text-color;
   background-color: transparent;
 }

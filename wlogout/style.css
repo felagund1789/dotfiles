@@ -1,3 +1,9 @@
+@define-color bg-color rgba(30, 30, 30, 0.92);
+@define-color border-color rgba(50, 50, 50, 0.8);
+@define-color selected-bg-color #45475a;
+@define-color selected-border-color #313244;
+@define-color text-color #cdd6f4;
+
 * {
 	background-image: none;
 	box-shadow: none;
@@ -10,11 +16,11 @@ window {
 }
 
 button {
-	color: #cdd6f4;
-	text-decoration-color: #cdd6f4;
-	background-color: rgba(30, 30, 46, 0.85);
+	color: @text-color;
+	text-decoration-color: @text-color;
+	background-color: @bg-color;
 	outline-style: none;
-	border: 1px solid rgba(49, 50, 68, 0.8);
+	border: 1px solid @border-color;
 	border-width: 1px;
 	border-radius: 10px;
 	background-repeat: no-repeat;
@@ -27,15 +33,15 @@ button {
 
 
 button:focus {
-	background-color: #45475a;
-	border: 1px solid #6c7086;
+	background-color: @selected-bg-color;
+	border: 1px solid @selected-border-color;
 	background-size: 20%;
 	border-radius: 10px;
 }
 
 button:hover {
-	background-color: #45475a;
-	border: 1px solid #6c7086;
+	background-color: @selected-bg-color;
+	border: 1px solid @selected-border-color;
 	background-size: 25%;
 	border-radius: 10px;
 	animation: gradient_f 20s ease-in infinite;
