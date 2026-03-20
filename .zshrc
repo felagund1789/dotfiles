@@ -22,7 +22,9 @@ source <(fzf --zsh)
 
 eval "$(starship init zsh)"
 
-fastfetch --logo "/opt/pokemon-colorscripts/colorscripts/small/regular/$(pokemon-colorscripts -l | head -251 | shuf -n 1)"
+fastfetch \
+--config ~/.config/fastfetch/config.nano.jsonc \
+--logo "/opt/pokemon-colorscripts/colorscripts/small/regular/$(pokemon-colorscripts -l | head -251 | shuf -n 1)"
 
 alias vim="nvim"
 alias vi="nvim"
