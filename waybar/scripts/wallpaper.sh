@@ -47,17 +47,22 @@ generate_menu() {
     done
 }
 
-# Use wofi to display grid of wallpapers - IMPORTANT: added --sort-order=default
-selected=$(generate_menu | wofi --show dmenu \
-    --cache-file /dev/null \
-    --define "image-size=${THUMBNAIL_WIDTH}x${THUMBNAIL_HEIGHT}" \
-    --columns 3 \
-    --allow-images \
-    --insensitive \
-    --sort-order=default \
-    --prompt "Select Wallpaper" \
-    --conf ~/.config/wofi/wallpaper.conf \
-  )
+# Set original wallpaper path depending on mode
+if [[ "$1" == "--random" ]]; then
+    selected=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | shuf -n 1)
+else
+    # Use wofi to display grid of wallpapers - IMPORTANT: added --sort-order=default
+    selected=$(generate_menu | wofi --show dmenu \
+        --cache-file /dev/null \
+        --define "image-size=${THUMBNAIL_WIDTH}x${THUMBNAIL_HEIGHT}" \
+        --columns 3 \
+        --allow-images \
+        --insensitive \
+        --sort-order=default \
+        --prompt "Select Wallpaper" \
+        --conf ~/.config/wofi/wallpaper.conf \
+    )
+fi
 
 # Set wallpaper if one was selected
 if [ -n "$selected" ]; then
