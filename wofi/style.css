@@ -1,4 +1,4 @@
-@define-color bg-color rgba(30, 30, 30, 0.5);
+@define-color bg-color rgba(30, 30, 30, 0.92);
 @define-color border-color rgba(50, 50, 50, 0.8);
 @define-color selected-bg-color #45475a;
 @define-color selected-border-color #313244;
@@ -7,22 +7,23 @@
 
 * {
     font-size: 15px;
-    font-family: "Cascadia Code Nerd Font";
+    font-family: "Ubuntu Nerd Font";
 }
 
 /* Window */
 window {
   margin: 0px;
   padding: 0px;
-  border-radius: 10px;
+  border-radius: 5px;
+  border: none;
   background-color: transparent;
 }
 
 /* Outer Box */
 #outer-box {
   padding: 0px;
-  border: 1px solid @border-color;
-  border-radius: 10px;
+  border: none;
+  border-radius: 5px;
   background-color: @bg-color;
 }
 

@@ -13,7 +13,7 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 
 | Component         | Tool                                          |
 |-------------------|-----------------------------------------------|
-| Window Manager    | [Hyprland](https://hyprland.org/)             |
+| Window Manager    | [Hyprland](https://hypr.land/)             |
 | Shell             | Zsh                                           |
 | Prompt            | [Starship](https://starship.rs/)              |
 | Terminal          | [Kitty](https://sw.kovidgoyal.net/kitty/)     |
@@ -30,15 +30,10 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 | Screenshots       | [Hyprshot](https://github.com/Gustash/hyprshot) |
 | AUR Helper        | [paru](https://github.com/Morganamilo/paru)   |
 
-## Theme
-
-**Catppuccin Mocha** across the entire desktop (Hyprland, Kitty, Waybar, Wofi, SwayNC, Hyprlock, Wlogout).  
-**Dracula** for Yazi.
-
 ### Fonts
 
 - **JetBrainsMono Nerd Font** — Kitty terminal
-- **Cascadia Code Nerd Font** — Waybar, Wofi, SwayNC, Hyprlock
+- **Ubuntu Nerd Font** — Waybar, Wofi, SwayNC, Hyprlock
 
 ## Keybindings
 
