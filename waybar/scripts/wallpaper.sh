@@ -83,8 +83,8 @@ if [ -n "$selected" ]; then
 
     # Ensure a valid wallpaper was found before proceeding
     if [ -n "$original_path" ]; then
-        # Set wallpaper using swww with the original file
-        swww img -t grow "$original_path"
+        # Set wallpaper using awww with the original file
+        awww img -t grow "$original_path"
 
         # replace the current wallpaper path in the wlogout style.css with the new one
         sed -i "13 s|background-image: .*;|background-image: image(url(\"$original_path\"));|1" ~/.config/wlogout/style.css
