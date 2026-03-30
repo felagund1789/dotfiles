@@ -4,10 +4,11 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 
 ## Screenshots
 
-![Screenshot 1](screens/2026-03-21-210005_hyprshot.png)
-![Screenshot 2](screens/2026-03-21-210053_hyprshot.png)
-![Screenshot 3](screens/2026-03-21-210143_hyprshot.png)
-![Screenshot 4](screens/2026-03-21-210227_hyprshot.png)
+![Screenshot 1](screens/2026-03-27-171257_hyprshot.png)
+![Screenshot 2](screens/2026-03-27-171316_hyprshot.png)
+![Screenshot 3](screens/2026-03-30-094402_hyprshot.png)
+![Screenshot 4](screens/2026-03-21-210143_hyprshot.png)
+![Screenshot 5](screens/2026-03-21-210227_hyprshot.png)
 
 ## Overview
 
