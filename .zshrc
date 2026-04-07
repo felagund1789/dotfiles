@@ -28,5 +28,5 @@ fastfetch \
 
 alias vim="nvim"
 alias vi="nvim"
-alias ls="ls --color=auto"
+alias ls="eza"
 alias paru="paru --skipreview"
