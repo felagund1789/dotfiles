@@ -88,8 +88,6 @@
         "format-linked": "󱘖",
         "format-disconnected": "󰖪",
         "format-disabled": "󰖪",
-        "on-click": "bash ~/.config/waybar/scripts/wifi_menu.sh",
-        "on-click-right": "kitty -e nmtui",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{ifname} {ipaddr}",
         "tooltip-format-disconnected": "Disconnected",
