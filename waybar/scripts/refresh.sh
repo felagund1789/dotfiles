@@ -15,4 +15,4 @@ if pgrep -x "waybar" >/dev/null; then
 fi
 
 # Start waybar in the background.
-waybar &
+waybar --style ~/.config/waybar/macos-style.css &
