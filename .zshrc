@@ -30,3 +30,4 @@ alias vim="nvim"
 alias vi="nvim"
 alias ls="eza"
 alias paru="paru --skipreview"
+alias cat=bat
