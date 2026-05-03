@@ -20,6 +20,10 @@ window#waybar {
     color: @text-color;
 }
 
+window.taskbar#waybar {
+    border-radius: 0;
+}
+
 .modules-left,
 .modules-center,
 .modules-right {
@@ -68,7 +72,6 @@ window#waybar {
 #mpris.playing {
     color: #a6e3a1;
     background: transparent;
-    box-shadow: 0 0 10px rgba(166, 227, 161, 0.3);
 }
 
 #mpris.paused {
@@ -84,39 +87,21 @@ window#waybar {
 }
 
 #workspaces {
-    padding: 2px 6px;
+    padding: 0px 5px;
 }
 
 #workspaces button {
     background: transparent;
+    padding: 0px;
     border: none;
 }
 
-#workspaces button {
-    all: unset;
-    padding: 0 6px;
-    color: #6c7086;
-    border-radius: 5px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+#workspaces button .taskbar-window {
+    padding-bottom: 5px;
 }
 
-#workspaces button.active {
-    color: #b4befe;
-    background: transparent;
-}
-
-#workspaces button.visible {
-    color: #89dceb;
-    background: transparent;
-}
-
-#workspaces button.empty {
-    color: rgba(108, 112, 134, 0.5);
-}
-
-#workspaces button:hover {
-    color: #cdd6f4;
-    background: transparent;
+#workspaces button .taskbar-window.active {
+    border-bottom: 1px solid @text-color;
 }
 
 #language:hover,
@@ -150,34 +135,17 @@ window#waybar {
     padding: 0 10px;
 }
 
-#tray:hover {
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3),
-                0 0 12px rgba(137, 220, 235, 0.2);
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    background: transparent;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(243, 139, 168, 0.5);
-}
-
 #custom-updates {
     color: #f9e2af;
     padding: 2px 10px;
     border-radius: 5px;
     background: transparent;
-    box-shadow: 0 0 10px rgba(249, 226, 175, 0.2);
-    transition: all 0.3s ease;
 }
 
 #custom-updates:hover {
-    background: transparent;
-    box-shadow: 0 0 15px rgba(249, 226, 175, 0.4);
-    border-color: rgba(249, 226, 175, 0.5);
+    background-color: @selected-bg-color;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 #custom-notification {
@@ -186,10 +154,6 @@ window#waybar {
     border-radius: 5px;
     background: transparent;
     transition: all 0.3s ease;
-}
-
-#custom-notification:hover {
-    background: transparent;
 }
 
 #custom-notification.has-notification {
@@ -201,6 +165,12 @@ window#waybar {
     color: #bac2de;
     background: transparent;
     box-shadow: none;
+}
+
+#custom-notification:hover {
+    background-color: @selected-bg-color;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 tooltip {
