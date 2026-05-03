@@ -7,8 +7,11 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 ![Screenshot 1](screens/2026-03-27-171257_hyprshot.png)
 ![Screenshot 2](screens/2026-03-27-171316_hyprshot.png)
 ![Screenshot 3](screens/2026-03-30-094402_hyprshot.png)
-![Screenshot 4](screens/2026-03-21-210143_hyprshot.png)
+![Screenshot 4](screens/2026-05-03-205414_hyprshot.png)
 ![Screenshot 5](screens/2026-03-21-210227_hyprshot.png)
+
+### macOS Waybar Theme
+![Screenshot 6 — macOS Waybar theme](screens/2026-05-03-182551_hyprshot.png)
 
 ## Overview
 
@@ -118,7 +121,10 @@ dotfiles/
 ├── kitty/              # Kitty terminal + Catppuccin Mocha theme
 ├── swaync/             # SwayNC notification center config & style
 ├── waybar/             # Waybar config, style, and scripts
-│   └── scripts/        # Audio, Bluetooth, Wi-Fi, wallpaper & notification scripts
+│   ├── scripts/        # Audio, Bluetooth, Wi-Fi, wallpaper & notification scripts
+│   └── themes/         # Waybar themes
+│       ├── default/    # Default Waybar theme
+│       └── macos/      # macOS-inspired Waybar theme
 ├── wlogout/            # Wlogout layout & style
 ├── wofi/               # Wofi launcher config & style
 ├── yazi/               # Yazi file manager theme (Dracula)
@@ -127,6 +133,18 @@ dotfiles/
 ├── starship.toml       # Starship prompt config
 └── README.md
 ```
+
+## Waybar Themes
+
+Waybar configurations live under `waybar/themes/`, each with its own `config.jsonc` and `style.css`.
+
+### `default`
+
+The default theme featuring a full-width top bar with workspaces, system tray, and status modules.
+
+### `macos`
+
+A macOS-inspired layout with a compact top bar for system information and a centered dock-style bottom bar for workspace and window indicators.
 
 ## Waybar Scripts
 
