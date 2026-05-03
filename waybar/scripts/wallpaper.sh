@@ -55,7 +55,6 @@ else
     selected=$(generate_menu | wofi --show dmenu \
         --cache-file /dev/null \
         --define "image-size=${THUMBNAIL_WIDTH}x${THUMBNAIL_HEIGHT}" \
-        --columns 3 \
         --allow-images \
         --insensitive \
         --sort-order=default \
