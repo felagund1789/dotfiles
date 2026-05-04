@@ -21,6 +21,7 @@ window#waybar {
 }
 
 window.taskbar#waybar {
+    background-color: transparent;
     border-radius: 0;
 }
 
@@ -87,7 +88,8 @@ window.taskbar#waybar {
 }
 
 #workspaces {
-    padding: 0px 5px;
+    background: @bg-color;
+    border-radius: 5px;
 }
 
 #workspaces button {
@@ -96,12 +98,8 @@ window.taskbar#waybar {
     border: none;
 }
 
-#workspaces button .taskbar-window {
-    padding-bottom: 5px;
-}
-
 #workspaces button .taskbar-window.active {
-    border-bottom: 1px solid @text-color;
+    border-bottom: 2px solid @text-color;
 }
 
 #language:hover,

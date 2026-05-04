@@ -7,11 +7,12 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 ![Screenshot 1](screens/2026-03-27-171257_hyprshot.png)
 ![Screenshot 2](screens/2026-03-27-171316_hyprshot.png)
 ![Screenshot 3](screens/2026-03-30-094402_hyprshot.png)
-![Screenshot 4](screens/2026-05-03-205414_hyprshot.png)
-![Screenshot 5](screens/2026-03-21-210227_hyprshot.png)
+![Screenshot 4 — Wallpaper selection](screens/2026-05-03-205414_hyprshot.png)
+![Screenshot 5 — Hyprlock](screens/2026-03-21-210227_hyprshot.png)
 
 ### macOS Waybar Theme
-![Screenshot 6 — macOS Waybar theme](screens/2026-05-03-182551_hyprshot.png)
+![Screenshot 6 — macOS Waybar theme](screens/2026-05-04-131204_hyprshot.png)
+![Screenshot 7 — macOS Waybar theme — Wallpaper selection](screens/2026-05-04-131547_hyprshot.png)
 
 ## Overview
 
