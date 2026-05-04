@@ -162,7 +162,7 @@
             "update-active-window": true,
             "format": " {icon} ",
             "icon-size": 32,
-            "on-click-window": "hyprctl dispatch focuswindow address:{address}"
+            "on-click-window": "bash ~/.config/waybar/scripts/focus_window.sh {address} {button}"
         }
     }
 }]
