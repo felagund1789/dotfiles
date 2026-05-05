@@ -1,0 +1,187 @@
+@define-color bg-color rgba(30, 30, 30, 0.5);
+@define-color border-color transparent;
+@define-color selected-bg-color rgba(120, 120, 120, 0.5);
+@define-color selected-border-color #313244;
+@define-color text-color #ffffff;
+
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 16px;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 14px;
+    font-weight: 600;
+}
+
+window#waybar {
+    background: @bg-color;
+    color: @text-color;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 0px 0px 0px;
+    padding: 4px 4px;
+    background: transparent;
+    border: 0px;
+    box-shadow: none;
+}
+
+.modules-left:hover,
+.modules-center:hover,
+.modules-right:hover {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+#workspaces,
+#window,
+#mpris,
+#pulseaudio,
+#network,
+#bluetooth,
+#language,
+#battery,
+#clock,
+#tray,
+#custom-notification,
+#custom-updates {
+    padding: 0 5px;
+    margin: 0 0px;
+    color: @text-color;
+}
+
+#window {
+    color: @text-color;
+}
+
+#mpris {
+    color: #cba6f7;
+    padding: 2px 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#mpris.playing {
+    color: #a6e3a1;
+    background: transparent;
+}
+
+#mpris.paused {
+    color: #fab387;
+    background: transparent;
+}
+
+#mpris.stopped {
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    color: transparent;
+}
+
+#workspaces {
+    background: transparent;
+    border-radius: 0px;
+}
+
+#workspaces button {
+    background: transparent;
+    padding: 0px;
+    border: none;
+}
+
+#workspaces button .taskbar-window.active {
+    border-bottom: 2px solid @text-color;
+}
+
+#language:hover,
+#clock:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#battery:hover {
+    background-color: @selected-bg-color;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#battery.warning {
+    color: #f9e2af;
+    background: transparent;
+}
+
+#battery.critical {
+    color: #f38ba8;
+    background: transparent;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #94e2d5;
+    background: transparent;
+}
+
+#tray {
+    padding: 0 10px;
+}
+
+#custom-updates {
+    color: #f9e2af;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background: transparent;
+}
+
+#custom-updates:hover {
+    background-color: @selected-bg-color;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#custom-notification {
+    color: #89dceb;
+    padding: 2px 10px;
+    border-radius: 5px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+#custom-notification.has-notification {
+    color: #f9e2af;
+    background: transparent;
+}
+
+#custom-notification.none {
+    color: #bac2de;
+    background: transparent;
+    box-shadow: none;
+}
+
+#custom-notification:hover {
+    background-color: @selected-bg-color;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#custom-mainmenu {
+    color: #89dceb;
+    font-size: xx-large;
+    padding: 0 10px;
+    border-radius: 0px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+tooltip {
+    background: rgba(30, 30, 30, 0.85);
+    border: 1px solid #45475a;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5),
+                0 0 1px rgba(137, 220, 235, 0.3),
+                inset 0 1px 0 rgba(205, 214, 244, 0.05);
+}
+
+tooltip label {
+    color: @text-color;
+}

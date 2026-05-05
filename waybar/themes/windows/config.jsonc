@@ -1,0 +1,148 @@
+{
+    "layer": "bottom",
+    "position": "bottom",
+    "height": 48,
+    "reload_style_on_change": true,
+    "modules-left": ["custom/mainmenu", "hyprland/workspaces"],
+    "modules-center": [],
+    "modules-right": ["mpris", "tray", "hyprland/language", "pulseaudio#microphone", "pulseaudio#speaker", "network", "bluetooth", "battery", "custom/updates", "clock", "custom/notification"],
+    "custom/mainmenu": {
+        "format": "󰣇",
+        "tooltip": "Main Menu",
+        "on-click": "wofi --show drun --conf ~/.config/wofi/windows_mainmenu.conf"
+    },
+    "hyprland/workspaces": {
+        "format": "{windows}",
+        "format-window-separator": "",
+        "workspace-taskbar": {
+            "enable": true,
+            "update-active-window": true,
+            "format": " {icon} ",
+            "icon-size": 32,
+            "on-click-window": "bash ~/.config/waybar/scripts/focus_window.sh {address} {button}"
+        }
+    },
+    "custom/updates": {
+        "format": "󰚰  {}",
+        "interval": 3600,
+        "exec": "paru -Qu 2>/dev/null | wc -l",
+        "exec-if": "paru -Qu 2>/dev/null | grep -q .",
+        "on-click": "kitty -e paru -Syu",
+        "tooltip": false
+    },
+    "mpris": {
+        "player": "playerctld",
+        "format": "{player_icon}  {status_icon} {dynamic}",
+        "format-playing": "{player_icon}  {status_icon} {dynamic}",
+        "format-paused": "{player_icon}  {status_icon} {dynamic}",
+        "format-stopped": "",
+        "dynamic-order": ["artist", "title"],
+        "dynamic-separator": " — ",
+        "dynamic-len": 75,
+        "tooltip-format": "{artist} — {title}\n{position}/{length}",
+        "player-icons": {
+            "default": "󰎈",
+            "spotify": "",
+            "firefox": "",
+            "mpv": "󰃽"
+        },
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+        "on-click": "playerctl play-pause",
+        "on-click-middle": "playerctl previous",
+        "on-click-right": "playerctl next"
+    },
+    "custom/notification": {
+        "return-type": "json",
+        "interval": 3,
+        "exec": "bash ~/.config/waybar/scripts/notification.sh",
+        "on-click": "swaync-client -t -sw -R",
+        "on-click-right": "swaync-client -d",
+        "escape": true,
+        "tooltip": true
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+    "clock": {
+        "interval": 1,
+        "format": "󰥔  {:%H:%M}",
+        "format-alt": "  {:%a, %d %b %Y}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "on-scroll": 1
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "network": {
+        "interval": 3,
+        "format-wifi": " {icon} ",
+        "format-ethernet": " 󰈀 ",
+        "format-linked": " 󱘖 ",
+        "format-disconnected": " 󰖪 ",
+        "format-disabled": " 󰖪 ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname} {ipaddr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+    },
+    "bluetooth": {
+        "format-on": " 󰂯 ",
+        "format-off": " 󰂲 ",
+        "format-disabled": " 󰂲 ",
+        "format-connected": " 󰂱 ",
+        "tooltip-format": "Bluetooth on",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "bash ~/.config/waybar/scripts/bluetooth_menu.sh",
+        "on-click-right": "blueman-manager"
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "EN",
+        "format-gr": "GR",
+        "tooltip": true,
+        "on-click": "hyprctl switchxkblayout all next"
+    },
+    "battery": {
+        "interval": 10,
+        "states": {
+            "good": 90,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "tooltip-format": "{timeTo}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+    "pulseaudio#speaker": {
+        "scroll-step": 2,
+        "on-click": "bash ~/.config/waybar/scripts/audio_menu.sh",
+        "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "tooltip-format": "{desc} {volume}%",
+        "format-icons": ["󰕿", "󰖀", "󰕾"]
+    },
+    "pulseaudio#microphone": {
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-right": "pavucontrol",
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "tooltip-format": "Microphone {format_source}"
+    }
+}

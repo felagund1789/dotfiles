@@ -14,6 +14,11 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 ![Screenshot 6 — macOS Waybar theme](screens/2026-05-04-131204_hyprshot.png)
 ![Screenshot 7 — macOS Waybar theme — Wallpaper selection](screens/2026-05-04-131547_hyprshot.png)
 
+### Windows Waybar Theme
+![Screenshot 8 — Windows Waybar theme](screens/2026-05-05-234146_hyprshot.png)
+![Screenshot 9 — Windows Waybar theme](screens/2026-05-05-234321_hyprshot.png)
+![Screenshot 10 — Windows Waybar theme](screens/2026-05-05-234443_hyprshot.png)
+
 ## Overview
 
 | Component         | Tool                                          |
@@ -125,7 +130,8 @@ dotfiles/
 │   ├── scripts/        # Audio, Bluetooth, Wi-Fi, wallpaper & notification scripts
 │   └── themes/         # Waybar themes
 │       ├── default/    # Default Waybar theme
-│       └── macos/      # macOS-inspired Waybar theme
+│       ├── macos/      # macOS-inspired Waybar theme
+│       └── windows/    # Windows-inspired Waybar theme
 ├── wlogout/            # Wlogout layout & style
 ├── wofi/               # Wofi launcher config & style
 ├── yazi/               # Yazi file manager theme (Dracula)
@@ -146,6 +152,10 @@ The default theme featuring a full-width top bar with workspaces, system tray, a
 ### `macos`
 
 A macOS-inspired layout with a compact top bar for system information and a centered dock-style bottom bar for workspace and window indicators.
+
+### `windows`
+
+A Windows-inspired layout with an application menu and a taskbar-style bottom bar for workspace and window indicators.
 
 ## Waybar Scripts
 
