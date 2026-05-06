@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Windows Theme Symbol</title>
+  <desc id="desc">A desktop frame with only a bottom taskbar, main menu on the left, and tray on the right.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1231"/>
+      <stop offset="100%" stop-color="#2f2258"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="26" y="22" width="1228" height="676" rx="20" fill="none" stroke="#d8c9ff" stroke-width="4" opacity="0.7"/>
+
+  <rect x="90" y="610" width="1100" height="62" rx="16" fill="#110a21" stroke="#e5dbff" stroke-width="2.5"/>
+
+  <rect x="120" y="624" width="180" height="34" rx="10" fill="#b99cff"/>
+  <rect x="940" y="624" width="220" height="34" rx="10" fill="#d0bbff"/>
+
+  <rect x="350" y="624" width="48" height="34" rx="10" fill="#9c79ff"/>
+  <rect x="412" y="624" width="48" height="34" rx="10" fill="#9c79ff"/>
+  <rect x="474" y="624" width="48" height="34" rx="10" fill="#9c79ff"/>
+  <rect x="536" y="624" width="48" height="34" rx="10" fill="#9c79ff"/>
+</svg>

@@ -129,6 +129,7 @@ dotfiles/
 ├── waybar/             # Waybar config, style, and scripts
 │   ├── scripts/        # Audio, Bluetooth, Wi-Fi, wallpaper & notification scripts
 │   └── themes/         # Waybar themes
+│       ├── assets/     # Theme symbols (SVG + PNG)
 │       ├── default/    # Default Waybar theme
 │       ├── macos/      # macOS-inspired Waybar theme
 │       └── windows/    # Windows-inspired Waybar theme
@@ -144,6 +145,14 @@ dotfiles/
 ## Waybar Themes
 
 Waybar configurations live under `waybar/themes/`, each with its own `config.jsonc` and `style.css`.
+
+### Theme Visual Legend
+
+| Theme | Symbol |
+|---|---|
+| `default` | ![Default theme symbol](waybar/themes/assets/theme-symbol-default.png) |
+| `macos` | ![macOS theme symbol](waybar/themes/assets/theme-symbol-macos.png) |
+| `windows` | ![Windows theme symbol](waybar/themes/assets/theme-symbol-windows.png) |
 
 ### `default`
 

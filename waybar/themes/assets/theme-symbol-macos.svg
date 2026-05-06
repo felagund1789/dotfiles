@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">macOS Theme Symbol</title>
+  <desc id="desc">A desktop frame with a top bar and a centered dock at the bottom.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d2b2f"/>
+      <stop offset="100%" stop-color="#184d54"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="26" y="22" width="1228" height="676" rx="20" fill="none" stroke="#b9fff4" stroke-width="4" opacity="0.7"/>
+
+  <rect x="90" y="70" width="1100" height="50" rx="16" fill="#052024" stroke="#bcfff5" stroke-width="2.5"/>
+  <rect x="120" y="83" width="170" height="24" rx="10" fill="#66f0dd"/>
+  <rect x="930" y="83" width="230" height="24" rx="10" fill="#8cf7e8"/>
+
+  <rect x="380" y="606" width="520" height="74" rx="28" fill="#e8fffb" fill-opacity="0.2" stroke="#d8fff8" stroke-width="2.5"/>
+
+  <rect x="418" y="625" width="52" height="36" rx="10" fill="#66f0dd"/>
+  <rect x="486" y="625" width="52" height="36" rx="10" fill="#66f0dd"/>
+  <rect x="554" y="625" width="52" height="36" rx="10" fill="#66f0dd"/>
+  <rect x="622" y="625" width="52" height="36" rx="10" fill="#66f0dd"/>
+  <rect x="690" y="625" width="52" height="36" rx="10" fill="#66f0dd"/>
+  <rect x="758" y="625" width="52" height="36" rx="10" fill="#66f0dd"/>
+</svg>

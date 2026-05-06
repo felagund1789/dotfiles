@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Default Theme Symbol</title>
+  <desc id="desc">A desktop frame with only a top bar split into left, center, and right modules.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121826"/>
+      <stop offset="100%" stop-color="#1f2a44"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="26" y="22" width="1228" height="676" rx="20" fill="none" stroke="#c6d2ff" stroke-width="4" opacity="0.7"/>
+
+  <rect x="90" y="70" width="1100" height="58" rx="18" fill="#0e1320" stroke="#d7e0ff" stroke-width="2.5"/>
+
+  <rect x="120" y="85" width="260" height="28" rx="12" fill="#4ea1ff"/>
+  <rect x="510" y="85" width="260" height="28" rx="12" fill="#7ab8ff"/>
+  <rect x="900" y="85" width="260" height="28" rx="12" fill="#9ac8ff"/>
+
+  <line x1="640" y1="128" x2="640" y2="680" stroke="#d6e0ff" stroke-width="1.4" opacity="0.15"/>
+</svg>
