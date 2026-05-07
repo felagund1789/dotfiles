@@ -41,5 +41,15 @@ fi
 
 sed -i "s/\$currentTheme = .*/\$currentTheme = \"$SELECTED\"/" "$CONFIG_FILE"
 
+SWAYNC_CONFIG_DIR="$HOME/.config/swaync"
+
+if [[ "$SELECTED" == "windows" ]]; then
+    ln -sf "$SWAYNC_CONFIG_DIR/config-windows.json" "$SWAYNC_CONFIG_DIR/config.json"
+    swaync-client --reload-config
+else
+    ln -sf "$SWAYNC_CONFIG_DIR/config-default.json" "$SWAYNC_CONFIG_DIR/config.json"
+    swaync-client --reload-config
+fi
+
 # Reload hyprland
 hyprctl reload

@@ -1,4 +1,4 @@
-@define-color bg-color rgba(30, 30, 30, 0.5);
+@define-color bg-color rgba(30, 30, 30, 0.85);
 @define-color border-color transparent;
 @define-color selected-bg-color rgba(120, 120, 120, 0.5);
 @define-color selected-border-color #313244;
