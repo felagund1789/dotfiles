@@ -3,7 +3,7 @@
 set -euo pipefail
 
 ASSETS_DIR="$HOME/.config/waybar/themes/assets"
-CONFIG_FILE="$HOME/.config/hypr/hyprland.conf"
+CONFIG_FILE="$HOME/.config/hypr/hyprland.lua"
 SWAYNC_CONFIG_DIR="$HOME/.config/swaync"
 
 declare -A THEME_IMAGES=(
@@ -40,18 +40,18 @@ if [[ "$SELECTED" == img:* ]]; then
     SELECTED="${SELECTED%.png}"
 fi
 
-sed -i "s/\$currentTheme = .*/\$currentTheme = \"$SELECTED\"/" "$CONFIG_FILE"
+sed -i "s/^local currentTheme = .*/local currentTheme = \"$SELECTED\"/" "$CONFIG_FILE"
 
 if [[ "$SELECTED" == "windows" ]]; then
-    sed -i "s/^\s*gaps_in = .*/    gaps_in = 1/" "$CONFIG_FILE"
-    sed -i "s/^\s*gaps_out = .*/    gaps_out = 0/" "$CONFIG_FILE"
-    sed -i "s/^\s*rounding = .*/    rounding = 0/" "$CONFIG_FILE"
+    sed -i "s/^\s*gaps_in  = .*/        gaps_in  = 1,/" "$CONFIG_FILE"
+    sed -i "s/^\s*gaps_out = .*/        gaps_out = 0,/" "$CONFIG_FILE"
+    sed -i "s/^\s*rounding = .*/        rounding = 0,/" "$CONFIG_FILE"
     ln -sf "$SWAYNC_CONFIG_DIR/config-windows.json" "$SWAYNC_CONFIG_DIR/config.json"
     swaync-client --reload-config
 else
-    sed -i "s/^\s*gaps_in = .*/    gaps_in = 5/" "$CONFIG_FILE"
-    sed -i "s/^\s*gaps_out = .*/    gaps_out = 10/" "$CONFIG_FILE"
-    sed -i "s/^\s*rounding = .*/    rounding = 5/" "$CONFIG_FILE"
+    sed -i "s/^\s*gaps_in  = .*/        gaps_in  = 5,/" "$CONFIG_FILE"
+    sed -i "s/^\s*gaps_out = .*/        gaps_out = 10,/" "$CONFIG_FILE"
+    sed -i "s/^\s*rounding = .*/        rounding = 5,/" "$CONFIG_FILE"
     ln -sf "$SWAYNC_CONFIG_DIR/config-default.json" "$SWAYNC_CONFIG_DIR/config.json"
     swaync-client --reload-config
 fi
