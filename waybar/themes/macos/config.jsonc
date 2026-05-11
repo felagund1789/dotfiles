@@ -7,7 +7,7 @@
     "modules-right": ["tray", "hyprland/language", "pulseaudio#microphone", "pulseaudio#speaker", "network", "bluetooth", "battery", "custom/updates", "custom/notification"],
 
     "hyprland/window": {
-        "format": "{initialTitle}",
+        "format": "{title}",
         "icon": true
     },
     "hyprland/workspaces": {

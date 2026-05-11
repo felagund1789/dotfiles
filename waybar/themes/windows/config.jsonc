@@ -3,7 +3,7 @@
     "position": "bottom",
     "height": 48,
     "reload_style_on_change": true,
-    "modules-left": ["custom/mainmenu", "hyprland/workspaces"],
+    "modules-left": ["custom/mainmenu", "hyprland/workspaces", "hyprland/workspaces#taskbar"],
     "modules-center": [],
     "modules-right": ["mpris", "tray", "hyprland/language", "pulseaudio#microphone", "pulseaudio#speaker", "network", "bluetooth", "battery", "custom/updates", "clock", "custom/notification"],
     "custom/mainmenu": {
@@ -12,6 +12,11 @@
         "on-click": "wofi --show drun --conf ~/.config/wofi/windows_mainmenu.conf"
     },
     "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4]
+        }
+    },
+    "hyprland/workspaces#taskbar": {
         "format": "{windows}",
         "format-window-separator": "",
         "workspace-taskbar": {

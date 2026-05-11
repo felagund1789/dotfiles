@@ -11,13 +11,13 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 ![Screenshot 5 — Hyprlock](screens/2026-03-21-210227_hyprshot.png)
 
 ### macOS Waybar Theme
-![Screenshot 6 — macOS Waybar theme](screens/2026-05-04-131204_hyprshot.png)
-![Screenshot 7 — macOS Waybar theme — Wallpaper selection](screens/2026-05-04-131547_hyprshot.png)
+![Screenshot 6 — macOS Waybar theme](screens/2026-05-11-134328_hyprshot.png)
+![Screenshot 7 — macOS Waybar theme](screens/2026-05-11-135037_hyprshot.png)
 
 ### Windows Waybar Theme
-![Screenshot 8 — Windows Waybar theme](screens/2026-05-05-234146_hyprshot.png)
-![Screenshot 9 — Windows Waybar theme](screens/2026-05-05-234321_hyprshot.png)
-![Screenshot 10 — Windows Waybar theme](screens/2026-05-05-234443_hyprshot.png)
+![Screenshot 8 — Windows Waybar theme](screens/2026-05-11-115138_hyprshot.png)
+![Screenshot 9 — Windows Waybar theme](screens/2026-05-11-115620_hyprshot.png)
+![Screenshot 10 — Windows Waybar theme](screens/2026-05-11-115714_hyprshot.png)
 
 ## Overview
 
@@ -31,7 +31,7 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 | App Launcher      | [Wofi](https://hg.sr.ht/~scoopta/wofi)        |
 | Notifications     | [SwayNC](https://github.com/ErikReider/SwayNotificationCenter) |
 | Lock Screen       | [Hyprlock](https://github.com/hyprwm/hyprlock) |
-| Wallpaper         | [Waypaper](https://github.com/anufrievroman/waypaper) / [swww](https://github.com/LGFae/swww) |
+| Wallpaper         | [awww](https://codeberg.org/LGFae/awww) |
 | File Manager      | Nautilus (GUI) / [Yazi](https://yazi-rs.github.io/) (terminal) |
 | System Info       | [Fastfetch](https://github.com/fastfetch-cli/fastfetch) + [Pokemon Color Scripts](https://gitlab.com/phoneybadger/pokemon-colorscripts) |
 | Logout Menu       | [Wlogout](https://github.com/ArtsyMacaw/wlogout) |
@@ -42,8 +42,7 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 
 ### Fonts
 
-- **JetBrainsMono Nerd Font** — Kitty terminal
-- **Ubuntu Nerd Font** — Waybar, Wofi, SwayNC, Hyprlock
+- **JetBrainsMono Nerd Font** (for Powerline symbols in the terminal and Waybar)
 
 ## Keybindings
 
@@ -76,6 +75,8 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 | `Super + Shift + W` | Wi-Fi menu |
 | `Super + Shift + B` | Bluetooth menu |
 | `Super + Shift + A` | Audio menu |
+| `Super + Shift + T` | Waybar theme selector (default / macos / windows) |
+| `Super + Shift + V` | Clipboard history (CopyQ) |
 
 ### Screenshots
 
@@ -103,6 +104,7 @@ My personal dotfiles for a Hyprland-based desktop on Arch Linux.
 | `Super + S` | Toggle scratchpad |
 | `Super + Shift + S` | Move window to scratchpad |
 | `Super + Scroll` | Cycle through workspaces |
+| `Ctrl + Alt + Left/Right` | Cycle through workspaces |
 
 ### Media & System
 
@@ -127,7 +129,7 @@ dotfiles/
 ├── kitty/              # Kitty terminal + Catppuccin Mocha theme
 ├── swaync/             # SwayNC notification center config & style
 ├── waybar/             # Waybar config, style, and scripts
-│   ├── scripts/        # Audio, Bluetooth, Wi-Fi, wallpaper & notification scripts
+│   ├── scripts/        # Audio, Bluetooth, Wi-Fi, wallpaper, notifications, refresh and theme tools
 │   └── themes/         # Waybar themes
 │       ├── assets/     # Theme symbols (SVG + PNG)
 │       ├── default/    # Default Waybar theme
@@ -156,15 +158,28 @@ Waybar configurations live under `waybar/themes/`, each with its own `config.jso
 
 ### `default`
 
-The default theme featuring a full-width top bar with workspaces, system tray, and status modules.
+The default theme featuring a full-width top bar with workspaces, updates, MPRIS media controls, tray, and status modules.
 
 ### `macos`
 
-A macOS-inspired layout with a compact top bar for system information and a centered dock-style bottom bar for workspace and window indicators.
+A macOS-inspired dual-bar layout with a compact top bar for system information and a centered dock-style bottom bar for workspace window icons.
 
 ### `windows`
 
-A Windows-inspired layout with an application menu and a taskbar-style bottom bar for workspace and window indicators.
+A Windows-inspired bottom taskbar with a main menu launcher, workspace buttons, and live app icons per workspace.
+
+## Hyprland Theme Switching
+
+Hyprland theme presets are controlled by `$currentTheme` in `hypr/hyprland.conf` (currently set to `windows`).
+
+- `Super + Shift + T` opens `waybar/scripts/theme_selector.sh`
+- Theme selection updates `$currentTheme` in Hyprland config and reloads Hyprland
+- Also syncs SwayNC config:
+  - `windows` -> `swaync/config-windows.json`
+  - `default` / `macos` -> `swaync/config-default.json`
+- Adjusts Hyprland gaps/rounding to match style:
+  - `windows`: tight/no rounding
+  - `default` / `macos`: larger gaps + rounded corners
 
 ## Waybar Scripts
 
@@ -175,7 +190,7 @@ Custom scripts in `waybar/scripts/` used by Hyprland keybindings and the Waybar 
 A Wofi-based audio output switcher powered by `pactl`.
 
 - Lists all PulseAudio sinks with device icons (Bluetooth, HDMI, headphones, speakers), current volume, and mute state
-- Marks the currently active sink with a filled icon prefix (``)
+- Marks the currently active sink with a filled icon prefix (``)
 - **Toggle Mute** — mutes/unmutes the default sink and sends a desktop notification
 - **Open Pavucontrol** — launches the full PulseAudio volume control GUI
 - Selecting a sink sets it as the default and moves all active sink inputs to it
@@ -185,7 +200,7 @@ A Wofi-based audio output switcher powered by `pactl`.
 
 A Wofi-based Bluetooth manager powered by `bluetoothctl`.
 
-- Shows connected devices (marked with ``) before paired-but-disconnected ones, deduplicating the list
+- Shows connected devices (marked with ``) before paired-but-disconnected ones, deduplicating the list
 - Displays battery percentage for connected devices when available
 - **Toggle Bluetooth On/Off** — powers the adapter and notifies
 - Selecting a connected device disconnects it; selecting a disconnected device connects it (with a 10-second timeout)
@@ -210,12 +225,44 @@ A Wofi-based wallpaper picker, adapted from [highonskooma/Wofi-Wallpaper-Picker]
 - Generates and caches `250×141` thumbnails with `imagemagick` (`magick`) so the picker loads instantly after the first run
 - Displays a 3-column thumbnail grid in Wofi with a **Random Wallpaper** shuffle option at the top (uses `wofi/assets/shuffle.png` as its icon)
 - Supports a `--random` flag to skip the picker and set a random wallpaper directly (used for scripted rotation)
-- After selection, applies the wallpaper with `swww img -t grow` and keeps the rest of the desktop in sync:
+- After selection, applies the wallpaper with `awww img -t grow` and keeps the rest of the desktop in sync:
   - Updates `~/.config/wlogout/style.css` (background image)
   - Updates `~/.config/hypr/hyprlock.conf` (lock screen background)
   - Saves the path to `~/.cache/current_wallpaper`
   - Sends a desktop notification with the wallpaper thumbnail
-- Requires: `swww`, `wofi`, `imagemagick`, `notify-send`
+- Requires: `awww`, `wofi`, `imagemagick`, `notify-send`
+
+### `theme_selector.sh`
+
+A Wofi-based Waybar theme switcher with image previews.
+
+- Lists available presets (`default`, `macos`, `windows`) with thumbnails from `waybar/themes/assets/`
+- Updates `$currentTheme` in `hypr/hyprland.conf`
+- Applies corresponding Hyprland gaps/rounding defaults for each theme style
+- Switches SwayNC preset between `config-default.json` and `config-windows.json`, then reloads SwayNC
+- Triggers `hyprctl reload` so Waybar is relaunched with the selected theme config/style
+
+### `notification.sh`
+
+Waybar JSON provider for unread-notification status from SwayNC.
+
+- Returns icon/class/tooltip payload used by the `custom/notification` module
+- Shows notification count when unread items exist
+- Falls back gracefully if `swaync-client` is unavailable
+
+### `focus_window.sh`
+
+Helper for taskbar window icons in `windows` and `macos` Waybar themes.
+
+- Left click focuses a window by Hyprland address
+- Middle click closes that window directly
+
+### `refresh.sh`
+
+Manual refresh helper bound to `Super + R`.
+
+- Reloads SwayNC config and CSS
+- Sends `SIGUSR2` to Waybar to reload its configuration and styles
 
 ## Shell
 

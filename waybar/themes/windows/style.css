@@ -85,19 +85,30 @@ window#waybar {
     border-radius: 0px;
 }
 
-#workspaces button {
+#workspaces .active {
+    background: rgba(137, 220, 235, 0.3);
+    border-radius: 0px;
+}
+
+#workspaces.taskbar {
+    background: transparent;
+    border-radius: 0px;
+    border: none;
+}
+
+#workspaces.taskbar button {
     background: transparent;
     padding: 0px;
     border: none;
 }
 
-#workspaces button .taskbar-window {
+#workspaces.taskbar button .taskbar-window {
     margin: 0 2px;
     padding: 0px 5px;
     background-color: transparent;
 }
 
-#workspaces button .taskbar-window.active {
+#workspaces.taskbar button .taskbar-window.active {
     border-bottom: 2px solid @text-color;
 }
 
