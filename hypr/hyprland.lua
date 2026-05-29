@@ -37,6 +37,7 @@ local fileManager = "nautilus"
 local browser     = "firefox"
 local menu        = "wofi --show drun"
 local logoutMenu  = "wlogout -b 4 -c 20 -m 450"
+-- local logoutMenu  = "wlogout -b 2 -c 20 -r 20 -L 650 -R 650 -T 300 -B 300"
 
 -------------------
 ---- AUTOSTART ----
@@ -147,6 +148,10 @@ hl.config({
     animations = {
         enabled = true,
     },
+
+    cursor = {
+        no_warps = true,
+    },
 })
 
 -- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
@@ -201,7 +206,7 @@ hl.animation({ leaf = "zoomFactor",          enabled = true,  speed = 7,    bezi
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
     dwindle = {
-        default_split_ratio = 1.1, -- Set the default split ratio for the first split of a workspace
+        default_split_ratio = 1, -- Set the default split ratio for the first split of a workspace
         force_split = 2,  -- always split to the right (new = right or bottom)
         preserve_split = true, -- You probably want this
     },
@@ -338,12 +343,6 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 -- Scroll through existing workspaces with ctrl + alt + arrow keys
 hl.bind("CTRL + ALT + right", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind("CTRL + ALT + left",  hl.dsp.focus({ workspace = "e-1" }))
-
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })

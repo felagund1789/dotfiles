@@ -12,6 +12,8 @@
         "on-click": "wofi --show drun --conf ~/.config/wofi/windows_mainmenu.conf"
     },
     "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl eval 'hl.dispatch(hl.dsp.focus({ workspace = \"-1\" }))'",
+        "on-scroll-down": "hyprctl eval 'hl.dispatch(hl.dsp.focus({ workspace = \"+1\" }))'",
         "persistent-workspaces": {
             "*": [1, 2, 3, 4]
         }
